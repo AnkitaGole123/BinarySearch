@@ -9,18 +9,18 @@ public class BinarySearch {
         findingNumber(toBeSearched, search, largeNumber, smalllNumber);
     }
 
-    public static String findingNumber(int toBeSearch, int[] searching, int largeNumber, int smallNumber) {
+    public static int findingNumber(int toBeSearch, int[] searching, int largeNumber, int smallNumber) {
         for (int i = 0; i < searching.length; i++) {
             int middleNumber = gettingMiddleNumber(largeNumber, smallNumber);
             if (searching[middleNumber] == toBeSearch) {
-                return ("The index of number is " + middleNumber);
+                return (middleNumber);
             } else if (searching[middleNumber] > toBeSearch) {
                 largeNumber = middleNumber;
             } else if (searching[middleNumber] < toBeSearch) {
                 smallNumber = middleNumber;
             }
         }
-        return ("number is not exist");
+        return (-1);
     }
     private static int gettingMiddleNumber(int largeNumber, int smallNumber) {
         return (largeNumber + smallNumber) / 2;
