@@ -9,18 +9,18 @@ public class BinarySearch {
         List<Integer> searchIn = Arrays.asList(1, 3, 4, 6, 7, 11, 14, 22);
         int largeNumber = searchIn.size();
         int smallNumber = 0;
-        findNumberInList(toBeSearched, searchIn,largeNumber,smallNumber);
+        findElement(toBeSearched, searchIn,largeNumber,smallNumber);
     }
 
-    public static <T extends Comparable <T>> int findNumberInList(T toBeSearch, List<T> searchIn, int largeNumber, int smallNumber) {
+    public static <T extends Comparable <T>> int findElement(T toBeSearch, List<T> searchIn, int largeNumber, int smallNumber) {
         if (smallNumber < largeNumber-1) {
             int middleNumber = getMiddleNumber(largeNumber, smallNumber);
-            if (searchIn.get(middleNumber) == toBeSearch) {
+            if (searchIn.get(middleNumber).equals(toBeSearch)) {
                 return middleNumber;
             } else if (searchIn.get(middleNumber).compareTo(toBeSearch)  > 0) {
-                return findNumberInList(toBeSearch,searchIn, middleNumber,smallNumber);
+                return findElement(toBeSearch,searchIn, middleNumber,smallNumber);
             } else if (searchIn.get(middleNumber).compareTo(toBeSearch) < 0) {
-                return findNumberInList(toBeSearch,searchIn,largeNumber,middleNumber);
+                return findElement(toBeSearch,searchIn,largeNumber,middleNumber);
             }
         }
         return (-1);
