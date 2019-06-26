@@ -5,11 +5,11 @@ public class Searcher implements Comparable{
        this.searchIn = searchIn;
     }
     public int searchIn;
-    public static void search(Searcher searchIn){
-        System.out.println("this works");
-    }
+
     @Override
     public int compareTo(Object o) {
-        return 0;
+        return searchIn;
     }
 }
+
+
