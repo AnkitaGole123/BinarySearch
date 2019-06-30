@@ -5,31 +5,25 @@ import java.util.List;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int toBeSearched = Integer.parseInt(args[0]);
-        List<Integer> searchIn = Arrays.asList(1, 3, 4, 6, 7, 11, 14, 22);
-        int largeNumber = searchIn.size();
-        int smallNumber = 0;
-        findElement(toBeSearched, searchIn, largeNumber, smallNumber);
+        List<String> searchIn = Arrays.asList("a","b","c","d","e");
+        int lastIndex1 =searchIn.size() - 1;
+        System.out.println(findElement("a",searchIn,0,lastIndex1));
     }
 
-    public static <T extends Comparable<T>> int findElement(T toBeSearch, List<T> searchIn, int largeNumber, int smallNumber) {
-        if (largeNumber == 1) {
-            return 0;
-        }
-        if (smallNumber < largeNumber - 1) {
-            int middleNumber = getMiddleNumber(largeNumber, smallNumber);
+    public static <T extends Comparable<T>> int findElement(T toBeSearch, List<T> searchIn,int smallNumber, int largeNumber) {
+        if(smallNumber < largeNumber) {
+            int middleNumber = (smallNumber + largeNumber) / 2;
             if (searchIn.get(middleNumber).equals(toBeSearch)) {
                 return middleNumber;
-            } else if (searchIn.get(middleNumber).compareTo(toBeSearch) > 0) {
-                return findElement(toBeSearch, searchIn, middleNumber, smallNumber);
             } else if (searchIn.get(middleNumber).compareTo(toBeSearch) < 0) {
-                return findElement(toBeSearch, searchIn, largeNumber, middleNumber);
+                return findElement(toBeSearch, searchIn, middleNumber+1, largeNumber);
             }
+                return findElement(toBeSearch, searchIn, 0, middleNumber-1);
         }
         return (-1);
     }
 
-    private static int getMiddleNumber(int largeNumber, int smallNumber) {
-        return (largeNumber + smallNumber) / 2;
-    }
+//    private static int getMiddleNumber(int largeNumber, int smallNumber) {
+//        return (largeNumber + smallNumber) / 2;
+//    }
 }
